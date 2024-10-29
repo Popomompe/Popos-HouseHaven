@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popos HouseHaven</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/enabled_lo/564x/91/e7/54/91e75418b056064b2e1b89fb3f047dcc.jpg');
+            color: #333;
+        }
+
+        header {
+            background-image: url('https://i.pinimg.com/enabled_lo/564x/91/e7/54/91e75418b056064b2e1b89fb3f047dcc.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .decorated-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5em;
+            color: #ff4e50;
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+            padding: 10px 0;
+            border-bottom: 3px solid #f9d423;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .homepage {
+            position: relative;
+            height: 80vh;
+            background-image: url('https://i.pinimg.com/1200x/1e/52/78/1e52784b1c5c08650794f8e91f892ba1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .homepage h2 {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .property {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .property img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(76, 175, 80, 0.9);
+            color: white;
+            position: relative;
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .favorites, .wishlist {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .favorites h2, .wishlist h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .favorites .property, .wishlist .property {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 15px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+
+         /* Mobile Responsiveness */
+         @media (max-width: 768px) {
+            header {
+                padding: 10px;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: inline-block;
+                padding: 10px;
+            }
+
+            .homepage h2 {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            .property {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .property img {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            main {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.2em;
+            }
+
+            .homepage {
+                height: 50vh;
+            }
+
+            .homepage h2 {
+                font-size: 1.2em;
+            }
+
+            .property img {
+                width: 90%;
+            }
+
+            .contact-form input, .contact-form textarea {
+                padding: 8px;
+            }
+
+            .contact-form button {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+
+        /* Map Styles */
+        .map-container {
+            position: relative;
+            height: 500px;
+            margin: 20px 0;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="decorated-text">Popos HouseHaven</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('houses')">Houses</a></li>
+            <li><a href="#" onclick="showSection('apartments')">Apartments</a></li>
+            <li><a href="#" onclick="showSection('developments')">Developments</a></li>
+            <li><a href="#" onclick="showSection('map')">Interactive Map</a></li>
+            <li><a href="#" onclick="showSection('agents')">Agents Profiles</a></li>
+            <li><a href="#" onclick="showSection('favorites')">Favorites</a></li>
+            <li><a href="#" onclick="showSection('wishlist')">Wishlist</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <title>Real Estate Agents</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+        .section {
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+        /* Agent profile styling */
+        .agent-profile {
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+        }
+        .agent-profile h3 {
+            color: #4A90E2;
+            font-size: 18px;
+            margin: 0;
+        }
+        .agent-profile p {
+            margin: 8px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <section id="agents" class="section">
+        <h2>Agents</h2>
+        <div class="agents-grid">
+            <div class="agent-profile">
+                <h3>John Doe</h3>
+                <p>Contact: 0123 456 789</p>
+                <p>Email: john.doe@example.com</p>
+                <p>Specialty: Residential Properties</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Jane Smith</h3>
+                <p>Contact: 0987 654 321</p>
+                <p>Email: jane.smith@example.com</p>
+                <p>Specialty: Luxury Homes</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Robert Brown</h3>
+                <p>Contact: 1234 567 890</p>
+                <p>Email: robert.brown@example.com</p>
+                <p>Specialty: Commercial Properties</p>
+            </div>
+            <!-- Add more agent profiles as needed -->
+        </div>
+    </section>
+    <section id="agent-cards" class="section">
+        <h2>Meet Our Real Estate Agents</h2>
+        <div class="agents-grid">
+            <div class="agent-profile">
+                <h3>John Doe</h3>
+                <p>Phone: 0123 456 789</p>
+                <p>Properties: 3 Bedroom House</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Jane Smith</h3>
+                <p>Phone: 0987 654 321</p>
+                <p>Properties: 4 Bedroom House</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Robert Brown</h3>
+                <p>Phone: 1234 567 890</p>
+                <p>Properties: 5 Bedroom House, Cozy Townhouses</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Emily Davis</h3>
+                <p>Phone: 0555 666 777</p>
+                <p>Properties: 3 Bedroom House with Pool</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Sarah Taylor</h3>
+                <p>Phone: 0777 888 999</p>
+                <p>Properties: Modern 4 Bedroom House, Modern Condominium</p>
+            </div>
+            <div class="agent-profile">
+                <h3>Michael Brown</h3>
+                <p>Phone: 0333 444 555</p>
+                <p>Properties: Luxury 5 Bedroom House, 1 Bedroom Apartment</p>
+            </div>
+            <!-- Add more agents here as necessary -->
+        </div>
+    </section>
+</body>
+</html>
+
+    <main>
+        <section id="home" class="section homepage"> 
+            <h2>Find Your Dream Home Today!</h2>
+        </section>
+
+        <section id="houses" class="section hidden">
+            <h2>Houses for Sale</h2>
+            <div class="property">
+                <img src="C:/Users/Administrator/Documents/Prime Property Finder.com/Small Mansions Homes.jpeg" alt="3 Bedroom House">
+                <div>
+                    <h3><a href="#">3 Bedroom House</a></h3>
+                    <p>Price: R1,500,000</p>
+                    <p>Address: 123 Main Street, Centurion, Gauteng</p>
+                    <p>Agent: John Doe - 0123 456 789</p>
+                </div>
+            </div>
+            <div class="property">
+                <img src="https://i.pinimg.com/564x/8b/5f/ab/8b5fab757beb6866433d9d0028222e7e.jpg" alt="4 Bedroom House">
+                <div>
+                    <h3><a href="#">4 Bedroom House</a></h3>
+                    <p>Price: R2,000,000</p>
+                    <p>Address: 45 Oak Avenue, Sandton, Gauteng</p>
+                    <p>Agent: Jane Smith - 0987 654 321</p>
+                </div>
+            </div>
+            <div class="property">
+                <img src="https://i.pinimg.com/564x/58/11/81/581181b6863e1649bafc2e5ea6763f51.jpg" alt="5 Bedroom House">
+                <div>
+                    <h3><a href="#">5 Bedroom House</a></h3>
+                    <p>Price: R3,500,000</p>
+                    <p>Address: 78 Pine Street, Pretoria, Gauteng</p>
+                    <p>Agent: Robert Brown - 1234 567 890</p>
+                </div>
+            </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/891/5/8710891/images/property-8710891-5195878_dhd.jpg" alt="3 Bedroom House with Pool">
+            <div>
+                <h3><a href="#">3 Bedroom House with Pool</a></h3>
+                <p>Price: R2,800,000</p>
+                <p>Address: 34 Maple Drive, Midrand, Gauteng</p>
+                <p>Agent: Emily Davis - 0555 666 777</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1960/43/10387960/images/property-10387960-70230164_dhd.jpg" alt="Modern 4 Bedroom House">
+            <div>
+                <h3><a href="#">Modern 4 Bedroom House</a></h3>
+                <p>Price: R2,500,000</p>
+                <p>Address: 16 Elm Street, Fourways, Gauteng</p>
+                <p>Agent: Sarah Taylor - 0777 888 999</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://i.pinimg.com/564x/12/e2/83/12e283ed4642a60a5f88748cc658eb10.jpg" alt="Luxury 5 Bedroom House">
+            <div>
+                <h3><a href="#">Luxury 5 Bedroom House</a></h3>
+                <p>Price: R4,000,000</p>
+                <p>Address: 90 Rose Avenue, Pretoria, Gauteng</p>
+                <p>Agent: Michael Brown - 0333 444 555</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://i.pinimg.com/564x/9b/1f/a0/9b1fa026d397500488deee273a038414.jpg" alt="3 Bedroom Family Home">
+            <div>
+                <h3><a href="#">3 Bedroom Family Home</a></h3>
+                <p>Price: R1,750,000</p>
+                <p>Address: 22 Crescent Road, Alberton, Gauteng</p>
+                <p>Agent: Anna White - 0123 456 789</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://i.pinimg.com/736x/11/97/9b/11979b46d08de7275a023c6ae65e9939.jpg" alt="4 Bedroom House Near Park">
+            <div>
+                <h3><a href="#">4 Bedroom House Near Park</a></h3>
+                <p>Price: R2,100,000</p>
+                <p>Address: 51 Garden Street, Roodepoort, Gauteng</p>
+                <p>Agent: David Green - 0222 333 444</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://i.pinimg.com/564x/e2/20/f1/e220f17be84a047e19a4f5353aad1eda.jpg" alt="Charming 3 Bedroom House">
+            <div>
+                <h3><a href="#">Charming 3 Bedroom House</a></h3>
+                <p>Price: R1,900,000</p>
+                <p>Address: 10 Birch Road, Boksburg, Gauteng</p>
+                <p>Agent: Lucy Adams - 0998 765 432</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="apartments" class="section hidden">
+        <h2>Apartments for Sale</h2>
+        <div class="property">
+            <img src="https://i.pinimg.com/564x/01/20/e3/0120e32457f2482f8328342fd68797a2.jpg" alt="1 Bedroom Apartment">
+            <div>
+                <h3><a href="#">1 Bedroom Apartment</a></h3>
+                <p>Price: R600,000</p>
+                <p>Address: 101 High Street, Johannesburg, Gauteng</p>
+                <p>Agent: Michael Brown - 1234 567 890</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/201/32/10164201/images/property-10164201-81516646_dhd.jpg" alt="3 Bedroom Apartment">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/201/32/10164201/images/property-10164201-96564688_sd.jpg" alt="3 Bedroom Apartment">
+            <div>
+                <h3><a href="#">3 Bedroom Apartment</a></h3>
+                <p>Price: R1,200,000</p>
+                <p>Address: 250 Rivonia Road, Sandton, Gauteng</p>
+                <p>Agent: Amy Wilson - 0111 222 333</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1677/47/10595677/images/property-10595677-73030623_dhd.jpg" alt="2 Bedroom Luxury Apartment">
+            <div>
+                <h3><a href="#">2 Bedroom Luxury Apartment</a></h3>
+                <p>Price: R1,500,000</p>
+                <p>Address: 15 West Street, Houghton, Gauteng</p>
+                <p>Agent: Mark Taylor - 0444 555 666</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1677/47/10595677/images/property-10595677-50409749_sd.jpg" alt="1 Bedroom Cozy Apartment">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/879/2/10704879/images/property-10704879-62559186_dhd.jpg" alt="1 Bedroom Cozy Apartment">
+            <div>
+                <h3><a href="#">1 Bedroom Cozy Apartment</a></h3>
+                <p>Price: R750,000</p>
+                <p>Address: 78 Fourth Avenue, Parktown North, Gauteng</p>
+                <p>Agent: Linda Green - 0777 888 999</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1866/24/8549866/images/property-8549866-34418711_e.jpg" alt="3 Bedroom Penthouse">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1866/24/8549866/images/property-8549866-30258377_e.jpg" alt="3 Bedroom Penthouse">
+            <div>
+                <h3><a href="#">3 Bedroom Penthouse</a></h3>
+                <p>Price: R2,800,000</p>
+                <p>Address: 5th Floor, 100 Oxford Road, Illovo, Gauteng</p>
+                <p>Agent: Tom Black - 0123 456 789</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://i.pinimg.com/564x/e8/75/3f/e8753f18c794bb2b6b567239a27de8ba.jpg" alt="Studio Apartment">
+            <div>
+                <h3><a href="#">Studio Apartment</a></h3>
+                <p>Price: R500,000</p>
+                <p>Address: 300 Louis Botha Avenue, Orange Grove, Gauteng</p>
+                <p>Agent: Karen White - 0987 654 321</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1707/18/10237707/images/property-10237707-18371951_sd.jpg" alt="4 Bedroom Apartment">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/1707/18/10237707/images/property-10237707-19497544_e.jpg" alt="4 Bedroom Apartment">
+            <div>
+                <h3><a href="#">4 Bedroom Apartment</a></h3>
+                <p>Price: R1,800,000</p>
+                <p>Address: 10 Albury Road, Killarney, Gauteng</p>
+                <p>Agent: Mike Red - 0222 333 444</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/283/0/10400283/images/property-10400283-19541394_dhd.jpg" alt="2 Bedroom Garden Apartment">
+            <img src="https://helium.privateproperty.co.za/live-za-images/property/283/0/10400283/images/property-10400283-28456325_sd.jpg" alt="2 Bedroom Garden Apartment">
+            <div>
+                <h3><a href="#">2 Bedroom Garden Apartment</a></h3>
+                <p>Price: R1,200,000</p>
+                <p>Address: 77 Lyttleton Road, Rivonia, Gauteng</p>
+                <p>Agent: Jessica Blue - 0555 666 777</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="developments" class="section hidden">
+        <h2>New Developments</h2>
+        <div class="property">
+            <img src="https://images.prop24.com/339122834/Crop526x328" alt="Luxury Estate">
+            <img src="https://images.prop24.com/339122870/Crop320x213" alt="Luxury Estate">
+            <img src="https://images.prop24.com/339122843/Crop320x213" alt="Luxury Estate">
+            <div>
+                <h3><a href="#">Luxury Estate</a></h3>
+                <p>Price: R3,500,000</p>
+                <p>Address: 32 Willow Street, Pretoria, Gauteng</p>
+                <p>Agent: Emily White - 2345 678 901</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/344526267/Crop320x213" alt="Cozy Townhouses">
+            <img src="https://images.prop24.com/344526269/Crop320x213" alt="Cozy Townhouses">
+            <img src="https://images.prop24.com/344526297/Crop320x213" alt="Cozy Townhouses">
+            <div>
+                <h3><a href="#">Cozy Townhouses</a></h3>
+                <p>Price: R1,800,000</p>
+                <p>Address: 21 Greenstone Hill, Greenstone Hill, Gauteng</p>
+                <p>Agent: Robert Green - 3456 789 012</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/340960072/Crop320x213" alt="Modern Condominium">
+            <img src="https://images.prop24.com/340960082/Crop320x213" alt="Modern Condominium">
+            <div>
+                <h3><a href="#">Modern Condominium</a></h3>
+                <p>Price: R2,600,000</p>
+                <p>Address: 17 Rudd Road, Bedfordview, Gauteng</p>
+                <p>Agent: Sarah White - 4567 890 123</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/320594705/Crop320x213" alt="Eco Friendly Homes">
+            <img src="https://images.prop24.com/344202304/Crop320x213" alt="Eco Friendly Homes">
+            <div>
+                <h3><a href="#">Eco Friendly Homes</a></h3>
+                <p>Price: R2,200,000</p>
+                <p>Address: 8 Nature Drive, Fourways, Gauteng</p>
+                <p>Agent: Mark Blue - 5678 901 234</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/343778690/Crop320x213" alt="Luxury Townhomes">
+            <img src="https://images.prop24.com/343778680/Crop320x213" alt="Luxury Townhomes">
+            <img src="https://images.prop24.com/343778649/Crop320x213" alt="Luxury Townhomes">
+            <div>
+                <h3><a href="#">Luxury Townhomes</a></h3>
+                <p>Price: R3,000,000</p>
+                <p>Address: 150 Gold Reef Road, Johannesburg, Gauteng</p>
+                <p>Agent: Anna Brown - 6789 012 345</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/342425294/Crop320x213" alt="Affordable Housing">
+            <img src="https://images.prop24.com/342425295/Crop320x213" alt="Affordable Housing">
+            <div>
+                <h3><a href="#">Affordable Housing</a></h3>
+                <p>Price: R800,000</p>
+                <p>Address: 10 Main Road, Germiston, Gauteng</p>
+                <p>Agent: Brian Gold - 7890 123 456</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.pamgolding.co.za/content/properties/202205/608995/h/608995_h_17.jpg?w=600&quality=75" alt="Gated Community">
+            <img src="https://images.pamgolding.co.za/content/properties/202205/608995/h/608995_h_16.jpg?w=600&quality=75" alt="Gated Community">
+            <div>
+                <h3><a href="#">Gated Community</a></h3>
+                <p>Price: R4,500,000</p>
+                <p>Address: 5 Safety Road, Midrand, Gauteng</p>
+                <p>Agent: Lisa Green - 8901 234 567</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/336544016/Crop320x213" alt="Luxury Apartments">
+            <img src="https://images.prop24.com/336544014/Crop320x213" alt="Luxury Apartments">
+            <img src="https://images.prop24.com/336544037/Crop320x213" alt="Luxury Apartments">
+            <div>
+                <h3><a href="#">Luxury Apartments</a></h3>
+                <p>Price: R5,500,000</p>
+                <p>Address: 1 Kloof Road, Kloof, Gauteng</p>
+                <p>Agent: Chris Red - 9012 345 678</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/339956420/Crop320x213" alt="Family Homes">
+            <img src="https://images.prop24.com/339956398/Crop320x213" alt="Family Homes">
+            <img src="https://images.prop24.com/339956396/Crop320x213" alt="Family Homes">
+            <div>
+                <h3><a href="#">Family Homes</a></h3>
+                <p>Price: R2,400,000</p>
+                <p>Address: 12 Sunny Road, Soweto, Gauteng</p>
+                <p>Agent: Emma White - 0123 456 789</p>
+            </div>
+        </div>
+        <div class="property">
+            <img src="https://images.prop24.com/329908643/Crop320x213" alt="Luxury Lofts">
+            <img src="https://images.prop24.com/329908663/Crop320x213" alt="Luxury Lofts">
+            <img src="https://images.prop24.com/329908646/Crop320x213" alt="Luxury Lofts">
+            <div>
+                <h3><a href="#">Luxury Lofts</a></h3>
+                <p>Price: R2,900,000</p>
+                <p>Address: 200 Loft Lane, Midrand, Gauteng</p>
+                <p>Agent: David Blue - 0987 654 321</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="favorites" class="section hidden favorites">
+        <h2>Your Favorites</h2>
+         <div class="property">
+
+        <section id="wishlist" class="section hidden wishlist">
+                <h2>Your Wishlist</h2>
+                <div class="property">
+
+    <section id="map" class="section hidden">
+        <h2>Interactive Map</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509535!2d144.9537353153164!3d-37.81627997975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11cb1f%3A0x5045675218ceed4!2sVictoria%20State%20Library!5e0!3m2!1sen!2sau!4v1602822535610!5m2!1sen!2sau" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        <img src="path_to_your_image.jpg" alt="Map image" style="width: 100%; margin-top: 10px;">
+    </section>
+
+    <section id="wishlist" class="section hidden wishlist">
+        <h2>Your Wishlist</h2>
+        <div class="property">
+</main>
+
+    <!-- Additional properties go here -->
+    </section>
+
+    <div class="alert">
+        <h2>Property Alerts</h2>
+        <button onclick="alert('You will receive alerts for new listings!')">Sign Up for Alerts</button>
+    </div>
+
+    <div class="bond-calculator">
+        <h2>Bond Calculator</h2>
+        <label for="amount">Bond Amount (R): </label>
+        <input type="number" id="amount" placeholder="Enter amount" /><br>
+        <label for="interest">Interest Rate (%): </label>
+        <input type="number" id="interest" placeholder="Enter interest rate" /><br>
+        <label for="years">Loan Term (Years): </label>
+        <input type="number" id="years" placeholder="Enter loan term" /><br>
+        <button onclick="calculateBond()">Calculate</button>
+        <p id="bond-result"></p>
+    </div>
+
+    <script>
+        function calculateBond() {
+            // Get the input values
+            const amount = parseFloat(document.getElementById("amount").value);
+            const interestRate = parseFloat(document.getElementById("interest").value) / 100 / 12; // Monthly interest rate
+            const years = parseFloat(document.getElementById("years").value);
+            const months = years * 12;
+    
+            // Calculate the monthly payment using the formula
+            const monthlyPayment = (amount * interestRate) / (1 - Math.pow(1 + interestRate, -months));
+    
+            // Display the result in rands
+            document.getElementById("bond-result").innerHTML = 
+                isNaN(monthlyPayment) || !isFinite(monthlyPayment)
+                    ? "Please enter valid numbers for all fields."
+                    : `Monthly Payment: R ${monthlyPayment.toLocaleString("en-ZA", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+    </script>
+    
+    </body>
+    </html>
+
+    <div>
+        <h2>Select Province and City</h2>
+        <label for="province">Province: </label>
+        <select id="province" onchange="updateCities()">
+            <option value="">Select Province</option>
+            <option value="Gauteng">Gauteng</option>
+            <option value="Western Cape">Western Cape</option>
+            <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+            <option value="Eastern Cape">Eastern Cape</option>
+            <option value="Free State">Free State</option>
+            <option value="Limpopo">Limpopo</option>
+            <option value="Mpumalanga">Mpumalanga</option>
+            <option value="North West">North West</option>
+            <option value="Northern Cape">Northern Cape</option>
+        </select>
+
+        <label for="city">City/Town: </label>
+        <select id="city">
+            <option value="">Select City</option>
+        </select>
+    </div>
+
+    <script>
+        const citiesByProvince = {
+            "Gauteng": ["Johannesburg", "Pretoria", "Soweto", "Centurion"],
+            "Western Cape": ["Cape Town", "Stellenbosch", "Paarl", "George"],
+            "KwaZulu-Natal": ["Durban", "Pietermaritzburg", "Richards Bay", "Umlazi"],
+            "Eastern Cape": ["Port Elizabeth", "East London", "Mthatha", "Grahamstown"],
+            "Free State": ["Bloemfontein", "Welkom", "Bethlehem", "Kroonstad"],
+            "Limpopo": ["Polokwane", "Thohoyandou", "Tzaneen", "Lephalale"],
+            "Mpumalanga": ["Mbombela", "Emalahleni", "Secunda", "Ermelo"],
+            "North West": ["Rustenburg", "Mahikeng", "Klerksdorp", "Potchefstroom"],
+            "Northern Cape": ["Kimberley", "Upington", "Springbok", "De Aar"]
+        };
+    
+        function updateCities() {
+            const provinceSelect = document.getElementById("province");
+            const citySelect = document.getElementById("city");
+    
+            // Clear the city options
+            citySelect.innerHTML = '<option value="">Select City</option>';
+    
+            const selectedProvince = provinceSelect.value;
+            const cities = citiesByProvince[selectedProvince];
+    
+            if (cities) {
+                // Populate the city dropdown with cities of the selected province
+                cities.forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+    
+    </body>
+    </html>
+
+</main>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="contact-form">
+    <h2>Contact Us</h2>
+    <form action="mailto:info@primepropertyfinder.com" method="post" enctype="text/plain">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+</main>
+
+<!-- Modal for Sign In -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Sign In</h2>
+        <div class="form-field">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username" />
+        </div>
+        <div class="form-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" />
+        </div>
+        <button onclick="signIn()">Log In</button>
+        <p>Don't have an account? <a href="#" onclick="openRegister()">Register here</a></p>
+    </div>
+</div>
+
+<!-- Modal for Registration -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRegister()">&times;</span>
+        <h2>Register</h2>
+        <div class="form-field">
+            <label for="reg-username">Username:</label>
+            <input type="text" id="reg-username" placeholder="Choose a username" />
+        </div>
+        <div class="form-field">
+            <label for="reg-password">Password:</label>
+            <input type="password" id="reg-password" placeholder="Choose a password" />
+        </div>
+        <button onclick="register()">Sign Up</button>
+    </div>
+</div>
+
+<!-- Welcome Message After Login -->
+<div class="form-container">
+    <div id="welcomeMessage" class="welcome-message"></div>
+</div>
+
+<script>
+    // Open and close modals
+    function openModal() {
+        document.getElementById('loginModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('loginModal').style.display = 'none';
+    }
+
+    function openRegister() {
+        document.getElementById('loginModal').style.display = 'none';
+        document.getElementById('registerModal').style.display = 'block';
+    }
+
+    function closeRegister() {
+        document.getElementById('registerModal').style.display = 'none';
+        document.getElementById('loginModal').style.display = 'block';
+    }
+
+    // Register new user
+    function register() {
+        const username = document.getElementById('reg-username').value;
+        const password = document.getElementById('reg-password').value;
+
+        if (username && password) {
+            // Store user info in localStorage
+            localStorage.setItem(username, password);
+            alert(`Welcome, ${username}! Registration successful.`);
+            closeRegister();
+        } else {
+            alert("Please fill out both fields.");
+        }
+    }
+
+    // Sign in existing user
+    function signIn() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Check if user exists in localStorage and password matches
+        if (localStorage.getItem(username) === password) {
+            document.getElementById('welcomeMessage').textContent = `Welcome back, ${username}!`;
+            document.getElementById('loginModal').style.display = 'none';
+        } else {
+            alert("Invalid username or password.");
+        }
+    }
+
+    // Close modals when clicking outside of them
+    window.onclick = function(event) {
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        if (event.target === loginModal) {
+            closeModal();
+        } else if (event.target === registerModal) {
+            closeRegister();
+        }
+    }
+</script>
+
+</body>
+</html>
+
+</script>
+
+</body>
+</html>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Prime Property Finder. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            if (section.id === sectionId) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+    }
+
+    </script>
+
+</body>
+</html>
